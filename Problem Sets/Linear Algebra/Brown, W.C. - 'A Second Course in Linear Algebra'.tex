@@ -1,0 +1,352 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage{tabularx} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\usepackage{datetime}
+\usepackage{caption}
+\usepackage{tikz, pgfplots}
+\usepackage[bottom]{footmisc}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{environ}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{titlesec}
+\usepackage{systeme}
+\usepackage{enumitem}
+\usepackage{graphics}
+\usepackage{setspace}
+\usepackage{tikz-cd}
+\usepackage{adjustbox}
+\usepackage{amsthm}
+\usepackage{xpatch}
+\usepackage{capt-of}
+\usepackage[T1]{fontenc}
+\usepackage{pdfcolparallel}
+\usepackage{bussproofs}
+%\usepackage{dutchcal}
+\usepackage{eucal}
+\DeclareMathAlphabet\mathrsfso      {U}{rsfso}{m}{n}
+
+\newcommand{\lineb}{\vspace*{0.2cm}
+\hrulefill
+\vspace*{0.2cm}}
+
+\renewcommand{\labelitemi}{\tiny$\bullet$}
+% https://tex.stackexchange.com/questions/390521/vdash-and-models-with-curly-horizontal-lines
+\newcommand{\vsim}{\mathrel{\scalebox{1}[1.5]{$\shortmid$}\mkern-3.1mu\raisebox{0.15ex}{$\sim$}}}
+
+
+\usetikzlibrary{arrows.meta,automata,positioning,fit,shapes.geometric}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition:}%[section]
+
+\newtheorem*{fact}{Fact:}
+\newtheorem*{facts}{Facts:}
+\newtheorem*{expl}{Example:}
+\newtheorem*{corollary}{Corollary:}
+\newtheorem*{lemma}{Lemma:}
+\newtheorem*{theorem}{Theorem:}
+\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
+
+\newtheorem*{remark}{Remark:}%[section]
+
+% Citation: https://tex.stackexchange.com/questions/4216/how-to-typeset-correctly
+\newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+                     \hbox{\scriptsize.}\hbox{\scriptsize.}}}%
+                     =}
+\newcommand*{\defqe}{=\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+                     \hbox{\scriptsize.}\hbox{\scriptsize.}}}%
+                     }
+\makeatletter
+\AtBeginDocument{\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}}
+\makeatother
+
+\begin{document}
+
+\title{A Second Course in Linear Algebra \\ {\small Solution Reference: Jacob Noel\footnote{Unless otherwise cited, I derived the following answers as exercises for myself. }}}
+\author{Brown, William C.}
+%\date{\today}
+
+
+{\let\newpage\relax\maketitle}
+
+% ========================================================= %
+\pagebreak
+\section*{Chapter I - Linear Algebra}
+
+\subsection*{Section 1 - Definitions and Examples of Vector Spaces}
+
+
+\begin{flushleft}
+	1.
+\end{flushleft}
+
+We need to show that $(\mathbb{F}_p, \oplus, \cdot)$ is a field, where $p$ is a positive prime in $\mathbb{Z}$ and $\mathbb{F}_p = \{0, 1, \cdots, p - 1\}$. We define $x \oplus y = r$ to be such that $x + y = kp + r$ and $x \cdot y = w$ where $x \cdot y = k^\prime p + w$ and $x, y, r, w \in \mathbb{F}_p$ and $k, k^\prime \in \mathbb{Z}$. 
+
+First, demonstrating that $\oplus$ and $\cdot$ are well defined\footnote{This appears to be assumed by the problem, but for the same of completeness this will be written out as well.}, we need to show that such a solution $x + y = kp + r$ is unique. Therefore, let $x + y = k_1p + r_1$ and $x + y = k_2p + r_2$, this gives \[k_1p + r_1 = k_2p + r_2\] which may be rewritten $(k_1 - k_2)p = r_2 - r_1$. This implies $p \mid r_2 - r_1$, but since $r_1, r_2 \in \mathbb{F}_p$ we have $0 \leq |r_2 - r_1| \leq p-1$ giving $r_2 - r_1 = 0$ and $r_1 = r_2$ and therefore such a solution is unique. Likewise the argument for $\cdot$ is identical. 
+
+Now, validating our field axioms, for the following let $x, y, z, r_i, w_i \in \mathbb{F}_p$ and $k, k^\prime \in \mathbb{Z}$. 
+
+\begin{itemize}[noitemsep]
+	\item [V1.] We have $x \oplus y = r_1$ such that $x + y = k_1p + r_1$ and $y \oplus x = r_2$ such that $y + x = k_2p + r_2$, but $x + y = y + x$ in $\mathbb{Z}$, so $k_1p + r_1 = k_2p + r_2$ and equality follows from the uniqueness shown above.
+	\item [V2.] TODO
+	\item [V3.] Note that $x \oplus 0 = r$ in $x + 0 = x = pk + r$ but $0 \leq x \leq p - 1$ therefore $x = r$, and hence $0 \in \mathbb{F}_p$ is an identity for $\oplus$. 
+	\item [V4.] TODO
+	\item [V5.] TODO
+	\item [V6.] TODO
+	\item [V7.] TODO
+	\item [V8.] TODO
+	\item [V9.] TODO
+\end{itemize}
+
+\hrulefill
+
+\pagebreak
+\begin{flushleft}
+	2.
+\end{flushleft}
+
+We seek to verify that the field of rational functions over $\mathbb{R}$, given by $$\mathbb{R}(X) = \left\{ \frac{f(x)}{g(x)} \mid f, g \in \mathbb{R}[X] \text{ and } g\neq 0 \right\}$$
+
+is a field under, $$\frac{f}{g} + \frac{h}{k} = \frac{kf+gh}{gk} \text{ and } \frac{f}{g} \cdot \frac{h}{k} = \frac{fh}{gk}$$
+
+As before, verifying that our operations are well-founded, let TODO
+
+
+\hrulefill
+
+\pagebreak
+\begin{flushleft}
+	3.
+\end{flushleft}
+
+\begin{lemma}[Subfield Criterion]
+	A nonempty subset of a field $S \subseteq F$ is a subfield under the same operations of $F$ if it is closed under the operations of $F$, and taking additive and multiplicative inverses (when $x$ is nonzero).
+\end{lemma}
+
+\textit{Proof.}
+
+Our field axioms F1, F2, F5, F6, F9 for $S$ are immediate consequences of the fact that the operations of $S$ are borrowed from the field $F$, while F4 and F8 are part of our assumption. This leaves only F3 and F7. 
+
+Note though, if $S$ is closed, nonempty, and contains additive inverses, then there exists $a, -a \in S$, implying $a - a = 0 \in S$ by closure, likewise for multiplication.
+
+\begin{flushright}
+	$\square$
+\end{flushright}
+
+
+
+\hrulefill 
+\vspace*{2mm}
+
+
+We seek to show that $F = \{a + b\sqrt{-5} \mid a, b \in \mathbb{Q}\} \subseteq \mathbb{C}$ is a subfield of $\mathbb{C}$. First, it is simple to note that the set is a subset of $\mathbb{C}$ and since our operations are borrowed from $\mathbb{C}$ we may apply the above lemma. Therefore we need only verify that $F$ is nonempty, closed under addition, multiplication, and taking of additive and multiplicative inverses.
+
+First, $F$ is clearly nonempty since $a = b = 0 \in \mathbb{Q}$ implies $0 \in F$.
+
+Suppose $x = a+b\sqrt{-5}, y = c + d\sqrt{-5} \in F$, then $x + y = (a + c) + (b + d)\sqrt{-5}$, and since $a + c, b + d \in \mathbb{Q}$ by additive closure of $\mathbb{Q}$, we have $x + y \in F$. Similarly, note that $$(a + b\sqrt{-5}) (c + d\sqrt{-5}) = (ac -5bd) + (ad + bc)\sqrt{-5}$$
+
+and by multiplicative closure of $\mathbb{Q}$ we have $xy \in F$.
+
+If $x$ defined as above is in $F$, then $-x = -a - b\sqrt{-5} \in F$, since $-a, -b \in \mathbb{Q}$ by existence of additive inverses of $\mathbb{Q}$. 
+
+Lastly, $$\frac{1}{x} = \frac{1}{a + b\sqrt{-5}} = \frac{1}{a + b\sqrt{-5}}\cdot\frac{a-b\sqrt{-5}}{a - b\sqrt{-5}} = \frac{a-b\sqrt{-5}}{a^2 -5b^2} = \left(\frac{a}{a^2-5b^2}\right) + \left(\frac{-b}{a^2-5b^2}\right)\sqrt{-5}$$
+
+which is in $F$ by closure and inverses of $\mathbb{Q}$. 
+
+\begin{flushright}
+	$\square$
+\end{flushright}
+
+\hrulefill 
+\vspace*{2mm}
+
+To see that $F^\prime = \{a + b\sqrt{-5} \mid a, b \in \mathbb{Z}\}$ is not a subfield, consider that by the last equation from the previous proof, when $a = 2$ and $b = 0$ we have $2 + 0\sqrt{-5} = 2 \in F^\prime$ but $$\frac{1}{2} = \frac{2}{2^2} + \frac{0}{2^2 - 0}\sqrt{-5} = \frac{1}{2} \notin \mathbb{Z}$$
+
+
+
+
+
+
+\pagebreak
+
+\begin{flushleft}
+	4.
+\end{flushleft}
+
+We seek to show that, $$V_a = \{f \in \mathbb{R} \mid \text{ $f$ has a derivative at $a$}\}$$ for $a \in I$ an open interval of $\mathbb{R}$, is a subspace of $\mathbb{R}^I$. 
+
+\hrulefill
+
+Since this requires real analysis, let us be cautious and lay out definitions. 
+TODO
+
+\begin{flushleft}
+	5.
+\end{flushleft}
+
+The most obvious vector space over $\mathbb{R}^\mathbb{N}$ is simply elementwise addition and scalar multiplication. That is, 
+
+$$\{x_i\} + \{y_i\} = \{x_i + y_i\} \text{ and } \alpha \{x_i\}= \{\alpha x_i\}$$
+
+for $i \in \mathbb{N}$ and $x_i, y_i, \alpha \in \mathbb{R}$. 
+
+Verifying this for our vector space axioms, 
+
+\begin{itemize}[noitemsep]
+	\item V1. $$\{x_i\} + \{y_i\} = \{x_i + y_i\} = \{y_i + x_i\} = \{y_i\} + \{x_i\}$$
+	\item V2. $$\{x_i\} + \left(\{y_i\} + \{z_i\}\right) = \{x_i + y_i + z_i\} = (\{x_i\} + \{y_i\}) + \{z_i\} $$
+	\item V3. Let $\textbf{0} = \{y_i\}$ for $y_i = 0$ for all $i \in \mathbb{N}$, then $$\{x_i\} + \textbf{0} = \{x_i\} + \{y_i\} = \{x_i + 0\} = \{x_i\}$$ 
+	\item V4. Let\footnote{There may be some harmless abuse of notation here depending on how we precisely construct of these as sets.} $\textbf{x} = \{x_i\} \in \mathbb{R}^\mathbb{N}$, then $-\textbf{x} = \{-x_i\}$, giving $$\textbf{x} + (-\textbf{x}) = \{x_i\} + \{-x_i\} = \textbf{0}$$
+	\item V5. $$(\alpha\beta) \{x_i\} = \{(\alpha \beta) x_i \} = \{\alpha (\beta x_i)\} = \alpha \{\beta x_i\} = \alpha (\beta \{x_i\})$$ for $\alpha, \beta, x_i \in \mathbb{R}$
+	\item V6. $$\{x_i\}(\alpha + \beta) = \{x_i(\alpha + \beta)\} = \{x_i\alpha + x_i\beta\} = \{x_i\alpha\} + \{x_i\beta\} = \{x_i\}\alpha + \{x_i\}\beta$$
+	\item V7. $$(\{x_i\} + \{y_i\})(\alpha)$$ TODO
+\end{itemize}
+
+
+\pagebreak
+\begin{flushleft}
+	6.
+\end{flushleft}
+
+\begin{lemma}[Subspace Criterion]
+	A nonempty subset of a vector space $W \subseteq V$ is a subspace under the same operations of $V$ if it is closed under the vector addition and scalar multiplication of $V$.
+\end{lemma}
+
+\textit{Proof.}
+
+
+\begin{flushright}
+	$\square$
+\end{flushright}
+
+
+\begin{flushleft}
+	(a.)
+\end{flushleft}
+ 
+
+
+
+
+
+
+\pagebreak
+
+\begin{flushleft}
+	7.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	8.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	9.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	10.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	11.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	12.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	13.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	14.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	15.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	16.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	17.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	18.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	19.
+\end{flushleft}
+TODO
+\hrulefill
+
+\begin{flushleft}
+	20.
+\end{flushleft}
+TODO
+
+
+\subsection*{Section 2 - Bases and Dimension}
+\subsection*{Section 3 - Linear Transformations}
+\subsection*{Section 4 - Products and Direct Sums}
+\subsection*{Section 5 - Quotient Spaces and the Isomorphism Theorems}
+\subsection*{Section 6 - Duals and Adjoints}
+\subsection*{Section 7 - Symmetric Bilinear Forms}
+
+
+
+\pagebreak
+\section*{Chapter II - Multilinear Algebra}
+
+\pagebreak
+\section*{Chapter III - Canonical Forms of Matrices}
+
+\pagebreak
+\section*{Chapter IV - Normed Linear Vector Spaces}
+
+\pagebreak
+\section*{Chapter V - Inner Product Spaces}
+
+
+
+\end{document}
