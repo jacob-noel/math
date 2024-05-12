@@ -1,0 +1,109 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage{tabularx} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\usepackage{datetime}
+\usepackage{caption}
+\usepackage{tikz, pgfplots}
+\usepackage[bottom]{footmisc}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{environ}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{titlesec}
+\usepackage{systeme}
+\usepackage{enumitem}
+\usepackage{graphics}
+\usepackage{setspace}
+\usepackage{tikz-cd}
+\usepackage{adjustbox}
+\usepackage{amsthm}
+\usepackage{xpatch}
+\usepackage{capt-of}
+\usepackage[T1]{fontenc}
+\usepackage{pdfcolparallel}
+\usepackage{bussproofs}
+%\usepackage{dutchcal}
+\usepackage{eucal}
+\DeclareMathAlphabet\mathrsfso      {U}{rsfso}{m}{n}
+
+\newcommand{\lineb}{\vspace*{0.2cm}
+\hrulefill
+\vspace*{0.2cm}}
+
+\renewcommand{\labelitemi}{\tiny$\bullet$}
+% https://tex.stackexchange.com/questions/390521/vdash-and-models-with-curly-horizontal-lines
+\newcommand{\vsim}{\mathrel{\scalebox{1}[1.5]{$\shortmid$}\mkern-3.1mu\raisebox{0.15ex}{$\sim$}}}
+
+
+\usetikzlibrary{arrows.meta,automata,positioning,fit,shapes.geometric}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition:}%[section]
+
+\newtheorem*{fact}{Fact:}
+\newtheorem*{facts}{Facts:}
+\newtheorem*{expl}{Example:}
+\newtheorem*{corollary}{Corollary:}
+\newtheorem*{lemma}{Lemma:}
+\newtheorem*{theorem}{Theorem:}
+\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
+
+\newtheorem*{remark}{Remark:}%[section]
+
+% Citation: https://tex.stackexchange.com/questions/4216/how-to-typeset-correctly
+\newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+                     \hbox{\scriptsize.}\hbox{\scriptsize.}}}%
+                     =}
+\newcommand*{\defqe}{=\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+                     \hbox{\scriptsize.}\hbox{\scriptsize.}}}%
+                     }
+\makeatletter
+\AtBeginDocument{\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}}
+\makeatother
+
+\begin{document}
+
+\title{Ideals, Varieties, and Algorithms \\ {\small Answer Reference: Jacob Noel\footnote{Unless otherwise cited, I derived the following answers as exercises for myself.}}}
+\author{Aluffi, Paolo}
+%\date{\today}
+
+
+{\let\newpage\relax\maketitle}
+
+% ========================================================= %
+
+\pagebreak
+\section*{Chapter I - Preliminaries: Set theory and categories}
+
+\begin{flushleft}
+	1.1
+\end{flushleft}
+
+
+\pagebreak
+
+\section*{Chapter II - Groups, first encounter}
+
+\subsection*{Section 1 - Definition of group}
+
+\begin{flushleft}
+	1.1
+\end{flushleft}
+
+
+
+
+
+
+
+
+\end{document}

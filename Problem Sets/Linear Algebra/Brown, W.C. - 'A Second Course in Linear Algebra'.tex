@@ -224,6 +224,8 @@ Verifying this for our vector space axioms,
 
 \textit{Proof.}
 
+Similarly to fields, we may note that V1, V2, V5, V6, V7, V8 all follow from the vector space axioms of $V$. Therefore the only remaining are V3 and V4, but closure of $W$ under scalar multiplication implies\footnote{This relies on the fact that the additive inverse of our multiplicative identity takes elements to their additive identity. To verify this, note that $1 \in V$, therefore there exists $-1 \in V$ such that $1 + (-1) = 0$, but then $$(1+ (-1))x = 1x + (-1)x = x + (-1)x = 0$$ Therefore $(-1)x$ must be the additive inverse of $x$.} that for $x \in W$ we have $(-1)x \in W$ so $x + (-1)x = 0 \in W$ and therefore both V3 and V4 are satisfied. 
+
 
 \begin{flushright}
 	$\square$
@@ -233,9 +235,40 @@ Verifying this for our vector space axioms,
 \begin{flushleft}
 	(a.)
 \end{flushleft}
+
+Let $x, y \in W_1$, then $x = \{x_i\}, y = \{y_i\} \in \mathbb{R}^\mathbb{N}$ with, $$\lim_{i \to \infty} x_i = \lim_{i \to \infty} y_i = 0$$ 
+
+then our limit addition laws imply, 
+
+$$\lim_{i \to \infty} x_i + \lim_{i \to \infty} y_i = \lim_{i \to \infty} (x_i +  y_i) = 0$$
  
+therefore $\{x_i + y_i\} \in W_1$ and hence $W_1$ is closed under addition. We have also that $\lim_{i \to \infty} x_i = 0$ implies $\alpha(\lim_{i \to \infty}x_i) = 0$ therefore $\alpha \{x_i\}  \in W_1$ and $W_1$ is therefore closed under scalar multiplication. Noting that $\textbf{0} \in W_1$ completes the proof that $W_1$ is a subspace of $\mathbb{R}^\mathbb{N}$. 
 
+\begin{flushright}
+	$\square$
+\end{flushright}
 
+\begin{flushleft}
+	(b.)
+\end{flushleft}
+
+Let $x, y \in W_2$, then $\{x_i\}$ and $\{y_i\}$ are bounded sequences. Let $|x_i| \leq M_1$ for all $x_i$ and $|y_i| \leq M_2$ for all $y_i$. Then $|x_i + y_i| \leq M_1 + M_2$ and hence $\{x_i + y_i\}$ is bounded and therefore in $W_2$, therefore $W_2$ is closed under addition. Similarly noting that $|\alpha x_i| \leq |\alpha|M_1$ shows that $W_2$ is closed under scalar multiplication and since $\textbf{0} \in W_2$ all the conditions for $W_2$ to be a subspace are satisfied. 
+
+\begin{flushright}
+	$\square$
+\end{flushright}
+
+\begin{flushleft}
+	(c.)
+\end{flushleft}
+
+As before $\textbf{0} \in W_3$ therefore $W_3$ is nonempty. Suppose $x, y \in W_3$, then $$\sum_{i=1}^\infty x_i^2 < \infty \text{ and }\sum_{i=1}^\infty y_i^2 < \infty$$
+
+since $x_i, y_i \in \mathbb{R}$ and $0 \leq x_i^2, y_i^2$, $$\left\{\sum_{i=1}^n x_i^2\right\}_{n=1}^\infty \text{ and }\left\{\sum_{i=1}^n y_i^2\right\}_{n=1}^\infty$$ are increasing and are bounded (by assumption) therefore by monotone convergence each has limits $\ell_1$ and $\ell_2$. By limit arithmetic,
+
+$$\lim_{n \to \infty} \sum_{i=1}^n x_i^2  + \lim_{n \to \infty} \sum_{i=1}^n y_i^2  = \lim_{n \to \infty}\left(\sum_{i=1}^n x_i^2  +  \sum_{i=1}^n y_i^2\right) = \lim_{n \to \infty}\left(\sum_{i=1}^n x_i^2  + y_i^2\right)$$
+
+therefore, $$\sum_{i=1}^\infty (x_i^2 + y_i^2)$$
 
 
 
@@ -245,7 +278,11 @@ Verifying this for our vector space axioms,
 \begin{flushleft}
 	7.
 \end{flushleft}
-TODO
+
+Let $(F^n)^* = F^n - \{0\}$
+
+
+
 \hrulefill
 
 \begin{flushleft}
@@ -257,19 +294,40 @@ TODO
 \begin{flushleft}
 	9.
 \end{flushleft}
-TODO
+
+Let $W_1, W_2 \subseteq V$ be subspaces of $V$ such that $W_1 \cup W_2 = W^\prime$ is a subspace of $V$. Suppose $W_1 \nsubseteq W_2$ and $W_2 \nsubseteq W_1$, then there exists $a \in W_1$ such that $a \notin W_2$ and $b \in W_2$ such that $b \notin W_1$. Then we have that $a + b \in W^\prime$, but since $W^\prime = W_1 \cup W_2$ then $a + b \in W_1$ or in $W_2$. Without loss of generality suppose $a + b \in W_1$, then since $W_1$ is a vector space $(a + b) - a = b \in W_1$, a contradiction. 
+
+\begin{flushright}
+	$\square$
+\end{flushright}
+
+
 \hrulefill
 
 \begin{flushleft}
 	10.
 \end{flushleft}
+
 TODO
+
+
 \hrulefill
 
 \begin{flushleft}
 	11.
 \end{flushleft}
-TODO
+
+Begin by rewriting\footnote{This is just the substitution $L = A, B = K, M = X$ with some reordering by commutativity of $+$ and $\cap$, but I find the labeling slightly clearer to remember.} the modular law in the following way, $$A + (X \cap B) = (A + X) \cap B$$ with $A \subseteq B$, for subspaces $A, B, X$. 
+
+Let $v \in A + (X \cap B)$ then we have $v = a + z$ for some $z \in X$ with $z \in B$. Then, since $A \subseteq B$, we have $a \in B$, therefore $a + z \in B$. Similarly, $z \in X$ therefore $a + z \in A + X$, therefore since $v \in A + X, B$ then $v \in (A + X) \cap B$ and $A + (X \cap B) \subseteq (A + X) \cap B$. 
+
+Let $v \in (A + X) \cap B$, then $v \in A + X$ and $v \in B$. Since $v \in A + X$ we may write $v = a + x$, for $a \in A$ and $x \in X$ with $a + x \in B$. Note though, since $B$ is a vector space and $a \in B$, we have $(a + x) - a = x \in B$, therefore $x \in X \cap B$ and $a + x \in A + (X \cap B)$, giving $(A + X) \cap B \subseteq A + (X \cap B)$. 
+
+\begin{flushright}
+	$\square$
+\end{flushright}
+
+
 \hrulefill
 
 \begin{flushleft}
@@ -311,7 +369,9 @@ TODO
 \begin{flushleft}
 	18.
 \end{flushleft}
-TODO
+
+Let $M_1, M_2 \in M_{n \times n}(F)$ such that $M_i = M_i^T$. 
+
 \hrulefill
 
 \begin{flushleft}
@@ -323,7 +383,8 @@ TODO
 \begin{flushleft}
 	20.
 \end{flushleft}
-TODO
+
+
 
 
 \subsection*{Section 2 - Bases and Dimension}
