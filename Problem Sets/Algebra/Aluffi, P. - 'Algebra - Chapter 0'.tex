@@ -72,7 +72,7 @@
 
 \begin{document}
 
-\title{Algebra: Chapter 0 \\ {\small Answer Reference: Jacob Noel\footnote{Unless otherwise cited, I derived the following answers as exercises for myself.}}}
+\title{Algebra: Chapter 0 \\ {\small Answer Reference: Jacob Noel\footnote{Except where otherwise cited or a solution is standard, I derived the following answers as exercises for myself.}}}
 \author{Aluffi, Paolo}
 %\date{\today}
 
@@ -83,6 +83,97 @@
 
 \pagebreak
 \section*{Chapter I - Preliminaries: Set theory and categories}
+
+\begin{flushleft}
+	1.1
+\end{flushleft}
+
+\begin{center}
+    \textit{Exercise left to reader.}
+\end{center}
+
+\begin{flushleft}
+	1.2
+\end{flushleft}
+
+Let $\sim$ be a relation on $S$, then recall that $$\mathcal{P}_\sim = \{[a]_\sim \mid a \in S\} \text{ with } [a]_\sim = \{b \in S \mid b \mid a\}$$
+
+we seek to show that for all $P_i \in \mathcal{P}_\sim$, 
+
+\begin{itemize}[noitemsep]
+    \item [1.] $P_i \neq \emptyset$,
+    \item [2.] $P_i \cap P_j = \emptyset$ for $i \neq j$,
+    \item [3.] $\bigcup_{i}P_i = S$
+\end{itemize}
+
+\textit{Proof}.
+
+First, a brief note that if $S$ is empty\footnote{This may appear to contadict statement 1 at first, but consider that 1 is a statement for each element of $\mathcal{P}_\sim$, if there are no elements in $\mathcal{P}_\sim$ then vacuity is invoked.}, then all the above are vacuously true. Rather, suppose $S \neq \emptyset$. 
+
+1. We have, $a \sim a$, therefore $a \in [a] = P_i \in \mathcal{P}_\sim$. 
+
+2. For the sake of contradiction suppose $P_i \neq P_j$ but $P_i \cap P_j \neq \emptyset$, then let $x \in [a] \cap [b]$ and $\alpha \in [a]$ arbitrary, then $\alpha \sim x$ and $x \sim b$ therefore $\alpha \in [b]$ and $[a] \subseteq [b]$, similar argument shows $[b] \subseteq [a]$ therefore $[a] = [b]$ a contradiction. 
+
+3. We have that for all $x \in S$, the set $[s] \in \mathcal{P}_\sim$, therefore $$\bigcup_s [s] = S$$
+
+
+
+\begin{flushleft}
+	1.3
+\end{flushleft}
+
+Given a partition $\mathcal{P}$ of a set $S$, we have $a \sim b $ for $a, b \in S$ if and only if $a, b \in P_i \in P$. We can verify that this satisfies our axioms for an equivalence relation since, $a \sim a$ clearly, likewise $a \sim b \Leftrightarrow b \sim a$. Suppose $a \sim b$ and $b \sim c$, then $a, b, c \in P_i \in P$, therefore $a \sim c$ as desired.
+
+
+\begin{flushleft}
+	1.4
+\end{flushleft}
+
+Let us make this more satisfying and solve this counting problem in the general case. Recall that a relation $\mathcal{R}$ on a set $S$ is an equivalence relation if and only if it may be represented as a partition, therefore we may simply count the number of distinct partitions which is given by the Bell numbers. To derive a formula for the number of partitions of a set, we will write a recurrence. 
+
+Suppose we know $B_i$ for $i \leq n$ and we wish to derive $B_n$. If we add the element $k_{n+1}$ to our set, then $k_{n+1}$ must reside in some set of our partition $P_i$. Begin by choosing this set, there are $\binom{n}{k}$ such selections (since $k_{n+1}$ is already chosen to be in it) of cardinality $k + 1$. Therefore there are $n - k$ remaining elements to partition in $B_{n-k}$ ways, giving,
+
+$$B_{n+1} = \sum_{k=0}^n \binom{n}{k}B_{n-k} = \sum_{k=0}^n \binom{n}{k}B_{k}$$
+
+with the final equality following from the symmetry of the binomial coefficients. We may begin by noting that, $B_0 = 1$ and $B_1 = 1$. Therefore $B_2 = \binom{1}{0}B_0 + \binom{1}{1}B_1 = 2$, and finally, $$B_3 = \binom{2}{0}B_0 + \binom{2}{1}B_1 + \binom{2}{2}B_2 = 1+ 2 + 2 = 5$$
+
+\begin{flushleft}
+	1.5
+\end{flushleft}
+
+Let $A \mathcal{R} B$ if $A \cap B \neq \emptyset$ for $A, B$ sets. We have $A \cap A = A$, and $A \cap B = B \cap A$, but letting $A = \{0, 1\}, B = \{1, 2\}, C = \{2, 3\}$ gives $A \cap B = \{1\}$, $B \cap C = \{2\}$ but $A \cap C = \emptyset$. 
+
+In this case, $[A]_\mathcal{R} = \{A, B\}$, $[B]_\mathcal{R} = \{A, B, C\}$, and $[C]_\mathcal{R} = \{B, C\}$, so we maintain that $[A]_\mathcal{R} \cup [B]_\mathcal{R} \cup [C]_\mathcal{R} = \{0, 1, 2, 3\}$ but $[A]_\mathcal{R} \cap [B]_\mathcal{R} = [A]_\mathcal{R} \neq [B]_\mathcal{R}$. That is that we lose disjointness.
+
+\begin{flushleft}
+	1.6
+\end{flushleft}
+
+First, $a - a = 0 \in \mathbb{Z}$ so our relation is reflexive. Let $b - a = c \in \mathbb{Z}$ then we have $(a - b) = -c \in \mathbb{Z}$ by closure of $\mathbb{Z}$ under additive inverses. Lastly, let $b - a, c - b \in \mathbb{Z}$, then by additive closure $(b - a) + (c - b) = c - a \in \mathbb{Z}$, so transitivity is satisfied. 
+
+\begin{flushright}
+	$\square$
+\end{flushright}
+
+First, note that since this relation is closed under additive inverses this equivalence relation really encodes is that the distance between two numbers $|r_1 - r_2|$ is in $\mathbb{Z}$. Therefore, if we take a real number $r_1$ we have $r_1 \sim r_i$ if $r_i \in r_1 + \mathbb{Z}$. Therefore each equivalence class is determined solely by any of its representative's distance from $\lfloor r_1 \rfloor$. This is therefore isomorphic to $[0, 1] \subseteq \mathbb{R}$ with $0 \sim 1$.
+
+Therefore, $$\mathbb{R} /\sim \cong \mathbb{R} / \mathbb{Z} \cong S_1$$
+
+\hrulefill
+
+For $\approx$ given by $(r_1, r_2) \approx (b_1, b_2) \Leftrightarrow b_1 - a_1 \in \mathbb{Z}$ and $b_2 - a_2 \in \mathbb{Z}$, we have a similar situation but in two dimensions. 
+
+Note that, $(r_1, r_2) \sim (r_1, r_2)$ since $(0, 0) \in \mathbb{Z} \times \mathbb{Z}$, and $(r_1, r_2) \sim (t_1, t_2)$ implies $(t_1 - r_1, t_2 - r_2) \in \mathbb{Z} \times \mathbb{Z}$, but as before closure under additive inverses in $\mathbb{Z}$ gives $(t_1, t_2) \sim (r_1, r_2)$. Lastly, suppose $(t_1, t_2) \approx (q_1, q_2)$, then 
+
+$$(q_1 - t_1, q_2 - t_2) + (t_1 - r_1, t_2 - r_2) = (q_1 - r_1, q_2 - r_2) \in \mathbb{Z} \times \mathbb{Z}$$
+
+since $\mathbb{Z} \times \mathbb{Z}$ is closed under addition. 
+
+\begin{flushright}
+	$\square$
+\end{flushright}
+
+
 
 
 \pagebreak
